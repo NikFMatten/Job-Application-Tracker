@@ -1,6 +1,6 @@
 from django.db import models
 
-class JobTracker(models.Model):
+class Job(models.Model):
     company_name: models.CharField(max_length=255)
     job_title: models.CharField(max_length=255)
     job_description: models.CharField(max_length=8000)
