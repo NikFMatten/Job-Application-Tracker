@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Job(models.Model):
     company_name = models.CharField(max_length=255)
@@ -8,4 +9,4 @@ class Job(models.Model):
     salary_range = models.CharField(max_length=25)
     office_policy = models.CharField(max_length=10)
     job_location = models.CharField(max_length=50)
-    date_applied = models.DateTimeField()
+    date_applied = models.DateTimeField(default=timezone.now)
