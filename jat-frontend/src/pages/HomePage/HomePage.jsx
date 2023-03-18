@@ -1,14 +1,18 @@
-import React, { useState } from "react";
-import test_job from "../../test_job.json";
-// MUI imports
+import React from "react";
 import Container from "@mui/material/Container";
-import SingleJob from "../../components/SingleJob/SingleJob";
+import ListOfJobs from "../../components/ListOfJobs/ListOfJobs";
+import NoJobData from "../../components/NoJobData/NoJobData";
 
 const HomePage = (props) => {
+  const { jobListings } = props;
   return (
     <div>
       <Container maxWidth="lg" id="container">
-        <SingleJob test_job={test_job} />
+        {jobListings.length > 0 ? (
+          <ListOfJobs jobListings={jobListings} />
+        ) : (
+          <NoJobData />
+        )}
       </Container>
     </div>
   );
