@@ -10,9 +10,9 @@ import Modal from "@mui/material/Modal";
 import Link from "@mui/material/Link";
 
 const SingleJob = (props) => {
-  const { test_job } = props;
-  const date = test_job.date_applied.slice(0, 10);
-  const time = test_job.date_applied.slice(11, 16);
+  const { job } = props;
+  const date = job.date_applied.slice(0, 10);
+  const time = job.date_applied.slice(11, 16);
   const style = {
     position: "absolute",
     top: "50%",
@@ -32,9 +32,9 @@ const SingleJob = (props) => {
     <>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {test_job.job_title}
+          {job.job_title}
         </Typography>
-        <Typography variant="h5">{test_job.company_name}</Typography>
+        <Typography variant="h5">{job.company_name}</Typography>
         <Typography variant="body2">
           Applied on <br /> {date} at {time}
         </Typography>
@@ -51,10 +51,10 @@ const SingleJob = (props) => {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h5" component="h2">
-              {test_job.company_name}
+              {job.company_name}
             </Typography>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              {test_job.job_title}
+              {job.job_title}
             </Typography>
             <Typography
               id="modal-modal-subtitle"
@@ -64,15 +64,15 @@ const SingleJob = (props) => {
               Applied on {date} at {time}
             </Typography>
             <Typography id="modal-modal-subtitle" variant="subtitle1">
-              Pay Range: {test_job.salary_range}
+              Pay Range: {job.salary_range}
               <br />
-              Office Policy: {test_job.office_policy}
+              Office Policy: {job.office_policy}
               <br />
-              Job Location: {test_job.job_location}
+              Job Location: {job.job_location}
               <br />
             </Typography>
 
-            <Link href={test_job.job_listing_url}>Job Listing URL</Link>
+            <Link href={job.job_listing_url}>Job Listing URL</Link>
           </Box>
         </Modal>
       </CardActions>
