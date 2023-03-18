@@ -1,5 +1,6 @@
 import { Grid, Box, Paper } from "@mui/material";
 import React from "react";
+import ColumnTitle from "../ColumnTitle/ColumnTItle";
 import SingleJob from "../SingleJob/SingleJob";
 
 const ListOfJobs = (props) => {
@@ -7,6 +8,7 @@ const ListOfJobs = (props) => {
 
   return (
     <div>
+      <ColumnTitle text={"Applied Jobs"} color={"#fff"} />
       <Box sx={{ width: 300 }}>
         <Paper elevation={2} sx={{ bgcolor: "#999999" }}>
           <Grid container spacing={2} sx={{ pb: 5, px: 3 }}>
