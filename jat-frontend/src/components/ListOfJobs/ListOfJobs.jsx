@@ -4,7 +4,12 @@ import ColumnTitle from "../ColumnTitle/ColumnTItle";
 import SingleJob from "../SingleJob/SingleJob";
 
 const ListOfJobs = (props) => {
-  const { jobListings, deleteJobListing, addNewArchivedJob } = props;
+  const {
+    jobListings,
+    deleteJobListing,
+    addNewArchivedJob,
+    addInterviewingJob,
+  } = props;
 
   const todaysDate = new Date();
   const monthAgo = new Date();
@@ -29,6 +34,8 @@ const ListOfJobs = (props) => {
                     deleteJobListing={deleteJobListing}
                     addNewArchivedJob={addNewArchivedJob}
                     displayArchiveButton={true}
+                    addInterviewingJob={addInterviewingJob}
+                    interviewing={false}
                   />
                 </Grid>
               );
