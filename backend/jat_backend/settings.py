@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'job_archive',
     'interviewing',
+    'rejected_jobs',
 ]
 
 MIDDLEWARE = [
