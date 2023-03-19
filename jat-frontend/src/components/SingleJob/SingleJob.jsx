@@ -8,11 +8,20 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
 import ArchiveButton from "../ArchiveButton/ArchiveButton";
+import InterviewButton from "../InterviewButton/InterviewButton";
 
 const SingleJob = (props) => {
-  const { job, deleteJobListing, addNewArchivedJob, displayArchiveButton } =
-    props;
+  const {
+    job,
+    deleteJobListing,
+    addNewArchivedJob,
+    displayArchiveButton,
+    addInterviewingJob,
+    interviewing,
+    interview_type,
+  } = props;
   const date = job.date_applied.slice(0, 10);
   const time = job.date_applied.slice(11, 16);
   const style = {
@@ -52,37 +61,61 @@ const SingleJob = (props) => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h5" component="h2">
-              {job.company_name}
-            </Typography>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              {job.job_title}
-            </Typography>
-            <Typography
-              id="modal-modal-subtitle"
-              variant="caption"
-              component="h2"
-            >
-              Applied on {date} at {time}
-            </Typography>
-            <Typography id="modal-modal-subtitle" variant="subtitle1">
-              Pay Range: {job.salary_range}
-              <br />
-              Office Policy: {job.office_policy}
-              <br />
-              Job Location: {job.job_location}
-              <br />
-            </Typography>
-            <Link href={job.job_listing_url}>Job Listing URL</Link>
-            {displayArchiveButton ? (
-              <ArchiveButton
-                job={job}
-                deleteJobListing={deleteJobListing}
-                addNewArchivedJob={addNewArchivedJob}
-              />
-            ) : (
-              <></>
-            )}
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <Typography id="modal-modal-title" variant="h5" component="h2">
+                  {job.company_name}
+                </Typography>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  {job.job_title}
+                </Typography>
+                <Typography
+                  id="modal-modal-subtitle"
+                  variant="caption"
+                  component="h2"
+                >
+                  Applied on {date} at {time}
+                </Typography>
+                <Typography id="modal-modal-subtitle" variant="subtitle1">
+                  Pay Range: {job.salary_range}
+                  <br />
+                  Office Policy: {job.office_policy}
+                  <br />
+                  Job Location: {job.job_location}
+                  <br />
+                </Typography>
+                <Link href={job.job_listing_url}>Job Listing URL</Link>
+                {interviewing ? (
+                  <Typography variant="body1">
+                    <b>Interview Type:</b> {interview_type}
+                  </Typography>
+                ) : (
+                  <></>
+                )}
+              </Grid>
+
+              <Grid item xs={5} sx={{ ml: 4 }}>
+                {!interviewing ? (
+                  <InterviewButton
+                    job={job}
+                    deleteJobListing={deleteJobListing}
+                    addInterviewingJob={addInterviewingJob}
+                  />
+                ) : (
+                  <></>
+                )}
+
+                {displayArchiveButton ? (
+                  <ArchiveButton
+                    job={job}
+                    deleteJobListing={deleteJobListing}
+                    addNewArchivedJob={addNewArchivedJob}
+                  />
+                ) : (
+                  <></>
+                )}
+              </Grid>
+            </Grid>
           </Box>
         </Modal>
       </CardActions>
