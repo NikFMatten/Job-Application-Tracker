@@ -8,9 +8,11 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import Link from "@mui/material/Link";
+import ArchiveButton from "../ArchiveButton/ArchiveButton";
 
 const SingleJob = (props) => {
-  const { job } = props;
+  const { job, deleteJobListing, addNewArchivedJob, displayArchiveButton } =
+    props;
   const date = job.date_applied.slice(0, 10);
   const time = job.date_applied.slice(11, 16);
   const style = {
@@ -71,8 +73,16 @@ const SingleJob = (props) => {
               Job Location: {job.job_location}
               <br />
             </Typography>
-
             <Link href={job.job_listing_url}>Job Listing URL</Link>
+            {displayArchiveButton ? (
+              <ArchiveButton
+                job={job}
+                deleteJobListing={deleteJobListing}
+                addNewArchivedJob={addNewArchivedJob}
+              />
+            ) : (
+              <></>
+            )}
           </Box>
         </Modal>
       </CardActions>
