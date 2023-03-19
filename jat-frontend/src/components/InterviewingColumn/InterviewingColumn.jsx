@@ -19,6 +19,8 @@ const InterviewingColumn = (props) => {
                     deleteJobListing={deleteInterviewingJob}
                     addNewArchivedJob={addNewArchivedJob}
                     displayArchiveButton={true}
+                    interviewing={true}
+                    interview_type={"HR/Recruiter"}
                   />
                 </Grid>
               );
