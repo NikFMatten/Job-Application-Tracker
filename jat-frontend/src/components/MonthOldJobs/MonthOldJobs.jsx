@@ -24,7 +24,7 @@ const MonthOldJobs = (props) => {
             {results.map((job) => {
               return (
                 <Grid item sm={12} key={job.id}>
-                  <SingleJob job={job} />
+                  <SingleJob job={job} displayArchiveButton={true} />
                 </Grid>
               );
             })}
