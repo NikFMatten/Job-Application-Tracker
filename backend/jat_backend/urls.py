@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('jobs/', include('job_tracker.urls')),
     path('archived_jobs/', include('job_archive.urls')),
+    path('interviewing_jobs/', include('interviewing.urls')),
 ]
