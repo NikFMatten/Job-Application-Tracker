@@ -21,4 +21,5 @@ urlpatterns = [
     path('jobs/', include('job_tracker.urls')),
     path('archived_jobs/', include('job_archive.urls')),
     path('interviewing_jobs/', include('interviewing.urls')),
+    path('rejected_jobs/', include('rejected_jobs.urls')),
 ]
