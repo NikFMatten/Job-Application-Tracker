@@ -27,6 +27,7 @@ const HomePage = (props) => {
                 jobListings={jobListings}
                 deleteJobListing={deleteJobListing}
                 addNewArchivedJob={addNewArchivedJob}
+                addInterviewingJob={addInterviewingJob}
               />
             </Grid>
             <Grid item sm={3}>
