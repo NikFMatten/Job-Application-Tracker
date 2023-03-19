@@ -23,7 +23,7 @@ const ArchiveButton = (props) => {
 
   return (
     <>
-      <Button variant="contained" sx={{ ml: 20 }} onClick={handleClick}>
+      <Button variant="contained" onClick={handleClick}>
         Archive Job
       </Button>
     </>
