@@ -10,9 +10,11 @@ import HomePage from "./pages/HomePage/HomePage";
 
 function App() {
   const [jobListings, setJobListings] = useState([]);
+  const [archivedJobs, setArchivedJobs] = useState([]);
 
   useEffect(() => {
     getJobListings();
+    getArchivedJobs();
   }, []);
 
   const getJobListings = async () => {
@@ -24,11 +26,53 @@ function App() {
     }
   };
 
+  const deleteJobListing = async (jobListingToDelete) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8000/jobs/${jobListingToDelete}/`
+      );
+      if (response.status === 204) getJobListings();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getArchivedJobs = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/archived_jobs/");
+      setArchivedJobs(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addNewArchivedJob = async (newArchivedJob) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/archived_jobs/",
+        newArchivedJob
+      );
+      if (response.status === 201) getArchivedJobs();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <NarBar />
       <Routes>
-        <Route path="/" element={<HomePage jobListings={jobListings} />} />
+        <Route
+          path="/"
+          element={
+            <HomePage
+              jobListings={jobListings}
+              archivedJobs={archivedJobs}
+              deleteJobListing={deleteJobListing}
+              addNewArchivedJob={addNewArchivedJob}
+            />
+          }
+        />
       </Routes>
     </div>
   );
