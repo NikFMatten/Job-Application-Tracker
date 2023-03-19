@@ -17,9 +17,9 @@ const ListOfJobs = (props) => {
 
   return (
     <div>
-      <ColumnTitle text={"Applied Jobs"} color={"#fff"} />
+      <ColumnTitle text={"Applied Jobs"} color={"#cacaca"} />
       <Box sx={{ width: 300 }}>
-        <Paper elevation={2} sx={{ bgcolor: "#999999" }}>
+        <Paper elevation={2} sx={{ bgcolor: "#e7e7e7" }}>
           <Grid container spacing={2} sx={{ pb: 5, px: 3 }}>
             {[...results].reverse().map((job) => {
               return (
