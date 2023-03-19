@@ -8,7 +8,7 @@ const ListOfJobs = (props) => {
 
   const todaysDate = new Date();
   const monthAgo = new Date();
-  monthAgo.setDate(monthAgo.getDate() - 30);
+  monthAgo.setDate(monthAgo.getDate() - 29);
 
   const results = jobListings.filter((d) => {
     const time = new Date(d.date_applied);
