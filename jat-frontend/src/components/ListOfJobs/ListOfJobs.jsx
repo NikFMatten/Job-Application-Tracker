@@ -4,7 +4,7 @@ import ColumnTitle from "../ColumnTitle/ColumnTItle";
 import SingleJob from "../SingleJob/SingleJob";
 
 const ListOfJobs = (props) => {
-  const { jobListings } = props;
+  const { jobListings, deleteJobListing, addNewArchivedJob } = props;
 
   const todaysDate = new Date();
   const monthAgo = new Date();
@@ -19,12 +19,17 @@ const ListOfJobs = (props) => {
     <div>
       <ColumnTitle text={"Applied Jobs"} color={"#cacaca"} />
       <Box sx={{ width: 300 }}>
-        <Paper elevation={2} sx={{ bgcolor: "#e7e7e7" }}>
+        <Paper elevation={2} sx={{ bgcolor: "#e7e7e7", minHeight: 1000 }}>
           <Grid container spacing={2} sx={{ pb: 5, px: 3 }}>
             {[...results].reverse().map((job) => {
               return (
                 <Grid item sm={12} key={job.id}>
-                  <SingleJob job={job} />
+                  <SingleJob
+                    job={job}
+                    deleteJobListing={deleteJobListing}
+                    addNewArchivedJob={addNewArchivedJob}
+                    displayArchiveButton={true}
+                  />
                 </Grid>
               );
             })}
