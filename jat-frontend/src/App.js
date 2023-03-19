@@ -11,10 +11,12 @@ import HomePage from "./pages/HomePage/HomePage";
 function App() {
   const [jobListings, setJobListings] = useState([]);
   const [archivedJobs, setArchivedJobs] = useState([]);
+  const [interviewingJobs, setInterviewingJobs] = useState([]);
 
   useEffect(() => {
     getJobListings();
     getArchivedJobs();
+    getInterviewingJobs();
   }, []);
 
   const getJobListings = async () => {
@@ -58,6 +60,40 @@ function App() {
     }
   };
 
+  const getInterviewingJobs = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/interviewing_jobs/"
+      );
+      setInterviewingJobs(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addInterviewingJob = async (newInterviewingJob) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/interviewing_jobs/",
+        newInterviewingJob
+      );
+      if (response.status === 201) getInterviewingJobs();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteInterviewingJob = async (jobToDelete) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8000/interviewing_jobs/${jobToDelete}/`
+      );
+      if (response.status === 204) getInterviewingJobs();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <NarBar />
@@ -70,6 +106,9 @@ function App() {
               archivedJobs={archivedJobs}
               deleteJobListing={deleteJobListing}
               addNewArchivedJob={addNewArchivedJob}
+              interviewingJobs={interviewingJobs}
+              addInterviewingJob={addInterviewingJob}
+              deleteInterviewingJob={deleteInterviewingJob}
             />
           }
         />
