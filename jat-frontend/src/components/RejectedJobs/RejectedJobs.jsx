@@ -4,7 +4,12 @@ import ColumnTitle from "../ColumnTitle/ColumnTItle";
 import SingleJob from "../SingleJob/SingleJob";
 
 const RejectedJobs = (props) => {
-  const { rejectedJobs, addRejectedJobs } = props;
+  const {
+    rejectedJobs,
+    addNewArchivedJob,
+    deleteRejectedJob,
+    addInterviewingJob,
+  } = props;
   return (
     <div>
       <ColumnTitle text={"Rejected"} color={"red"} />
@@ -18,6 +23,11 @@ const RejectedJobs = (props) => {
                     job={job}
                     displayArchivedJob={false}
                     interviewing={false}
+                    displayArchiveButton={true}
+                    addNewArchivedJob={addNewArchivedJob}
+                    deleteJob={deleteRejectedJob}
+                    addInterviewingJob={addInterviewingJob}
+                    displayRejectedButton={false}
                   />
                 </Grid>
               );
