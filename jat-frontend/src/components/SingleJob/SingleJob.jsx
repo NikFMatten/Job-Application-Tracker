@@ -11,6 +11,7 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import ArchiveButton from "../ArchiveButton/ArchiveButton";
 import InterviewButton from "../InterviewButton/InterviewButton";
+import RejectedButton from "../RejectedButton/RejectedButton";
 
 const SingleJob = (props) => {
   const {
@@ -19,8 +20,12 @@ const SingleJob = (props) => {
     addNewArchivedJob,
     displayArchiveButton,
     addInterviewingJob,
+    deleteInterviewingJob,
+    addRejectedJob,
     interviewing,
     interview_type,
+    deleteJob,
+    displayRejectedButton,
   } = props;
   const date = job.date_applied.slice(0, 10);
   const time = job.date_applied.slice(11, 16);
@@ -98,8 +103,18 @@ const SingleJob = (props) => {
                 {!interviewing ? (
                   <InterviewButton
                     job={job}
-                    deleteJobListing={deleteJobListing}
+                    deleteJob={deleteJob}
                     addInterviewingJob={addInterviewingJob}
+                  />
+                ) : (
+                  <></>
+                )}
+
+                {displayRejectedButton ? (
+                  <RejectedButton
+                    job={job}
+                    deleteJob={deleteJob}
+                    addRejectedJob={addRejectedJob}
                   />
                 ) : (
                   <></>
@@ -108,7 +123,7 @@ const SingleJob = (props) => {
                 {displayArchiveButton ? (
                   <ArchiveButton
                     job={job}
-                    deleteJobListing={deleteJobListing}
+                    deleteJob={deleteJob}
                     addNewArchivedJob={addNewArchivedJob}
                   />
                 ) : (
