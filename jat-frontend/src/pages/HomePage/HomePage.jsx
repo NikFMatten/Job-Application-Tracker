@@ -19,6 +19,8 @@ const HomePage = (props) => {
     deleteInterviewingJob,
     rejectedJobs,
     addRejectedJob,
+    deleteRejectedJob,
+    deleteArchivedJob,
   } = props;
   return (
     <div>
@@ -31,23 +33,41 @@ const HomePage = (props) => {
                 deleteJobListing={deleteJobListing}
                 addNewArchivedJob={addNewArchivedJob}
                 addInterviewingJob={addInterviewingJob}
+                addRejectedJob={addRejectedJob}
               />
             </Grid>
             <Grid item sm={2}>
-              <MonthOldJobs jobListings={jobListings} />
+              <MonthOldJobs
+                jobListings={jobListings}
+                deleteJobListing={deleteJobListing}
+                addNewArchivedJob={addNewArchivedJob}
+                addInterviewingJob={addInterviewingJob}
+                addRejectedJob={addRejectedJob}
+              />
             </Grid>
             <Grid item sm={2}>
-              <ArchivedJobs archivedJobs={archivedJobs} />
+              <ArchivedJobs
+                archivedJobs={archivedJobs}
+                deleteArchivedJob={deleteArchivedJob}
+                addInterviewingJob={addInterviewingJob}
+                addRejectedJob={addRejectedJob}
+              />
             </Grid>
             <Grid item sm={2}>
               <InterviewingColumn
                 interviewingJobs={interviewingJobs}
                 deleteInterviewingJob={deleteInterviewingJob}
                 addNewArchivedJob={addNewArchivedJob}
+                addRejectedJob={addRejectedJob}
               />
             </Grid>
             <Grid item sm={2}>
-              <RejectedJobs rejectedJobs={rejectedJobs} />
+              <RejectedJobs
+                rejectedJobs={rejectedJobs}
+                addNewArchivedJob={addNewArchivedJob}
+                deleteRejectedJob={deleteRejectedJob}
+                addInterviewingJob={addInterviewingJob}
+              />
             </Grid>
           </Grid>
         ) : (
