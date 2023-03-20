@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import React from "react";
 
 const ArchiveButton = (props) => {
-  const { job, deleteJobListing, addNewArchivedJob } = props;
+  const { job, deleteJob, addNewArchivedJob } = props;
   const jobToAdd = {
     company_name: job.company_name,
     job_title: job.job_title,
@@ -18,7 +18,7 @@ const ArchiveButton = (props) => {
 
   const handleClick = () => {
     addNewArchivedJob(jobToAdd);
-    deleteJobListing(jobToDelete);
+    deleteJob(jobToDelete);
   };
 
   return (
