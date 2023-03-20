@@ -16,11 +16,9 @@ import RejectedButton from "../RejectedButton/RejectedButton";
 const SingleJob = (props) => {
   const {
     job,
-    deleteJobListing,
     addNewArchivedJob,
     displayArchiveButton,
     addInterviewingJob,
-    deleteInterviewingJob,
     addRejectedJob,
     interviewing,
     interview_type,
