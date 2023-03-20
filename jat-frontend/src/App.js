@@ -12,11 +12,13 @@ function App() {
   const [jobListings, setJobListings] = useState([]);
   const [archivedJobs, setArchivedJobs] = useState([]);
   const [interviewingJobs, setInterviewingJobs] = useState([]);
+  const [rejectedJobs, setRejectedJobs] = useState([]);
 
   useEffect(() => {
     getJobListings();
     getArchivedJobs();
     getInterviewingJobs();
+    getRejectedJobs();
   }, []);
 
   const getJobListings = async () => {
@@ -94,6 +96,27 @@ function App() {
     }
   };
 
+  const getRejectedJobs = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/rejected_jobs/");
+      setRejectedJobs(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addRejectedJob = async (jobToAdd) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/rejected_jobs/",
+        jobToAdd
+      );
+      if (response.status === 201) getRejectedJobs();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <NarBar />
@@ -109,6 +132,8 @@ function App() {
               interviewingJobs={interviewingJobs}
               addInterviewingJob={addInterviewingJob}
               deleteInterviewingJob={deleteInterviewingJob}
+              rejectedJobs={rejectedJobs}
+              addRejectedJob={addRejectedJob}
             />
           }
         />
