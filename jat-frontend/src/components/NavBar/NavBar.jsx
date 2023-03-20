@@ -1,7 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -38,7 +37,7 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <Typography variant="h6" align="center" style={{ color: "#1976b2" }}>
+        <Typography variant="h6" align="center" style={{ color: "#8bb4e2" }}>
           Menu
         </Typography>
         <Divider color="#1976b2" sx={{ mb: 2 }} />
@@ -49,7 +48,7 @@ export default function TemporaryDrawer() {
             </ListItemIcon>
             <ListItemText
               primary={
-                <Typography style={{ color: "#1976b2" }}>Add Job</Typography>
+                <Typography style={{ color: "#8bb4e2" }}>Add Job</Typography>
               }
             />
           </ListItemButton>
@@ -61,7 +60,9 @@ export default function TemporaryDrawer() {
             </ListItemIcon>
             <ListItemText
               primary={
-                <Typography style={{ color: "#1976b2" }}>Archived</Typography>
+                <Typography style={{ color: "#8bb4e2" }}>
+                  Archived Jobs
+                </Typography>
               }
             />
           </ListItemButton>
@@ -87,7 +88,8 @@ export default function TemporaryDrawer() {
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
-            PaperProps={{ sx: { backgroundColor: "#0a1929" } }}
+            PaperProps={{ sx: { backgroundColor: "#122c49" } }}
+            sx={{ bgcolor: "rgba(13, 13, 13, 0.75)" }}
           >
             {list(anchor)}
           </Drawer>
