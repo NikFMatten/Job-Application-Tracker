@@ -4,7 +4,12 @@ import ColumnTitle from "../ColumnTitle/ColumnTItle";
 import SingleJob from "../SingleJob/SingleJob";
 
 const ArchivedJobs = (props) => {
-  const { archivedJobs } = props;
+  const {
+    archivedJobs,
+    addInterviewingJob,
+    deleteArchivedJob,
+    addRejectedJob,
+  } = props;
   return (
     <div>
       <ColumnTitle text={"Archived Jobs"} color={"#999999"} />
@@ -15,7 +20,14 @@ const ArchivedJobs = (props) => {
             {[...archivedJobs].reverse().map((job) => {
               return (
                 <Grid item sm={12} key={job.id}>
-                  <SingleJob job={job} displayArchiveButton={false} />
+                  <SingleJob
+                    job={job}
+                    displayArchiveButton={false}
+                    displayRejectedButton={true}
+                    addInterviewingJob={addInterviewingJob}
+                    deleteJob={deleteArchivedJob}
+                    addRejectedJob={addRejectedJob}
+                  />
                 </Grid>
               );
             })}
