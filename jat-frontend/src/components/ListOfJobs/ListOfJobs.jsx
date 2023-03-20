@@ -9,6 +9,7 @@ const ListOfJobs = (props) => {
     deleteJobListing,
     addNewArchivedJob,
     addInterviewingJob,
+    addRejectedJob,
   } = props;
 
   const todaysDate = new Date();
@@ -31,9 +32,11 @@ const ListOfJobs = (props) => {
                 <Grid item sm={12} key={job.id}>
                   <SingleJob
                     job={job}
-                    deleteJobListing={deleteJobListing}
+                    deleteJob={deleteJobListing}
                     addNewArchivedJob={addNewArchivedJob}
+                    addRejectedJob={addRejectedJob}
                     displayArchiveButton={true}
+                    displayRejectedButton={true}
                     addInterviewingJob={addInterviewingJob}
                     interviewing={false}
                   />
