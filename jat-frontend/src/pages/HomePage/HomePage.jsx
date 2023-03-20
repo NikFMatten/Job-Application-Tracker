@@ -6,6 +6,7 @@ import NoJobData from "../../components/NoJobData/NoJobData";
 import MonthOldJobs from "../../components/MonthOldJobs/MonthOldJobs";
 import ArchivedJobs from "../../components/ArchivedJobs/ArchviedJobs";
 import InterviewingColumn from "../../components/InterviewingColumn/InterviewingColumn";
+import RejectedJobs from "../../components/RejectedJobs/RejectedJobs";
 
 const HomePage = (props) => {
   const {
@@ -16,13 +17,15 @@ const HomePage = (props) => {
     interviewingJobs,
     addInterviewingJob,
     deleteInterviewingJob,
+    rejectedJobs,
+    addRejectedJob,
   } = props;
   return (
     <div>
-      <Container maxWidth="lg" id="container">
+      <Container id="container">
         {jobListings.length > 0 ? (
-          <Grid container spacing={2}>
-            <Grid item sm={3}>
+          <Grid container spacing={10} sx={{ width: "max-content", ml: -30 }}>
+            <Grid item sm={2}>
               <ListOfJobs
                 jobListings={jobListings}
                 deleteJobListing={deleteJobListing}
@@ -30,18 +33,21 @@ const HomePage = (props) => {
                 addInterviewingJob={addInterviewingJob}
               />
             </Grid>
-            <Grid item sm={3}>
+            <Grid item sm={2}>
               <MonthOldJobs jobListings={jobListings} />
             </Grid>
-            <Grid item sm={3}>
+            <Grid item sm={2}>
               <ArchivedJobs archivedJobs={archivedJobs} />
             </Grid>
-            <Grid item sm={3}>
+            <Grid item sm={2}>
               <InterviewingColumn
                 interviewingJobs={interviewingJobs}
                 deleteInterviewingJob={deleteInterviewingJob}
                 addNewArchivedJob={addNewArchivedJob}
               />
+            </Grid>
+            <Grid item sm={2}>
+              <RejectedJobs rejectedJobs={rejectedJobs} />
             </Grid>
           </Grid>
         ) : (
