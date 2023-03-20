@@ -4,7 +4,13 @@ import ColumnTitle from "../ColumnTitle/ColumnTItle";
 import SingleJob from "../SingleJob/SingleJob";
 
 const MonthOldJobs = (props) => {
-  const { jobListings } = props;
+  const {
+    jobListings,
+    deleteJobListing,
+    addNewArchivedJob,
+    addInterviewingJob,
+    addRejectedJob,
+  } = props;
 
   const endDate = new Date("2000-03-17T16:26:12-06:00");
   const monthAgo = new Date();
@@ -24,7 +30,16 @@ const MonthOldJobs = (props) => {
             {results.map((job) => {
               return (
                 <Grid item sm={12} key={job.id}>
-                  <SingleJob job={job} displayArchiveButton={true} />
+                  <SingleJob
+                    job={job}
+                    deleteJob={deleteJobListing}
+                    addNewArchivedJob={addNewArchivedJob}
+                    displayArchiveButton={true}
+                    displayRejectedButton={true}
+                    addInterviewingJob={addInterviewingJob}
+                    addRejectedJob={addRejectedJob}
+                    interviewing={false}
+                  />
                 </Grid>
               );
             })}
