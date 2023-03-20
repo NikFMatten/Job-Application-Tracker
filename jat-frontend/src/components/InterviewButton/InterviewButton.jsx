@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import React from "react";
 
 const InterviewButton = (props) => {
-  const { job, deleteJobListing, addInterviewingJob } = props;
+  const { job, deleteJob, addInterviewingJob } = props;
   const jobToAdd = {
     company_name: job.company_name,
     job_title: job.job_title,
@@ -18,7 +18,7 @@ const InterviewButton = (props) => {
 
   const handleClick = () => {
     addInterviewingJob(jobToAdd);
-    deleteJobListing(jobToDelete);
+    deleteJob(jobToDelete);
   };
 
   return (
