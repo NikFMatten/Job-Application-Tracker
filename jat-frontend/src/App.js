@@ -62,6 +62,17 @@ function App() {
     }
   };
 
+  const deleteArchivedJob = async (jobToDelete) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8000/archived_jobs/${jobToDelete}/`
+      );
+      if (response.status === 204) getArchivedJobs();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getInterviewingJobs = async () => {
     try {
       const response = await axios.get(
@@ -117,6 +128,17 @@ function App() {
     }
   };
 
+  const deleteRejectedJob = async (jobToDelete) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8000/rejected_jobs/${jobToDelete}/`
+      );
+      if (response.status === 204) getRejectedJobs();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <NarBar />
@@ -129,11 +151,13 @@ function App() {
               archivedJobs={archivedJobs}
               deleteJobListing={deleteJobListing}
               addNewArchivedJob={addNewArchivedJob}
+              deleteArchivedJob={deleteArchivedJob}
               interviewingJobs={interviewingJobs}
               addInterviewingJob={addInterviewingJob}
               deleteInterviewingJob={deleteInterviewingJob}
               rejectedJobs={rejectedJobs}
               addRejectedJob={addRejectedJob}
+              deleteRejectedJob={deleteRejectedJob}
             />
           }
         />
