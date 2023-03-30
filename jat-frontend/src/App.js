@@ -30,6 +30,16 @@ function App() {
     }
   };
 
+  const addJobListing = async (newJob) => {
+    try {
+      console.log("api call newJob obj:", newJob);
+      const response = await axios.post("http://localhost:8000/jobs/", newJob);
+      if (response.status === 201) getJobListings();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const deleteJobListing = async (jobListingToDelete) => {
     try {
       const response = await axios.delete(
@@ -141,13 +151,14 @@ function App() {
 
   return (
     <div>
-      <NarBar />
+      <NarBar addJobListing={addJobListing} />
       <Routes>
         <Route
           path="/"
           element={
             <HomePage
               jobListings={jobListings}
+              addJobListing={addJobListing}
               archivedJobs={archivedJobs}
               deleteJobListing={deleteJobListing}
               addNewArchivedJob={addNewArchivedJob}
