@@ -10,6 +10,7 @@ const ListOfJobs = (props) => {
     addNewArchivedJob,
     addInterviewingJob,
     addRejectedJob,
+    editJobListing,
   } = props;
 
   const todaysDate = new Date();
@@ -39,6 +40,7 @@ const ListOfJobs = (props) => {
                     displayRejectedButton={true}
                     addInterviewingJob={addInterviewingJob}
                     interviewing={false}
+                    editJobListing={editJobListing}
                   />
                 </Grid>
               );
