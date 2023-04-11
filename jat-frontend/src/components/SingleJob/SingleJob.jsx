@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import JobForm from "../JobForm/JobForm";
 
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -24,6 +25,7 @@ const SingleJob = (props) => {
     interview_type,
     deleteJob,
     displayRejectedButton,
+    editJobListing,
   } = props;
   const date = job.date_applied.slice(0, 10);
   const time = job.date_applied.slice(11, 16);
@@ -87,7 +89,9 @@ const SingleJob = (props) => {
                   Job Location: {job.job_location}
                   <br />
                 </Typography>
-                <Link href={job.job_listing_url}>Job Listing URL</Link>
+                <Link href={job.job_listing_url} target="_blank">
+                  Job Listing URL
+                </Link>
                 {interviewing ? (
                   <Typography variant="body1">
                     <b>Interview Type:</b> {interview_type}
@@ -105,7 +109,12 @@ const SingleJob = (props) => {
                     addInterviewingJob={addInterviewingJob}
                   />
                 ) : (
-                  <></>
+                  <JobForm
+                    apiCall={editJobListing} // Edit this api call to right one (editInterviewJob)
+                    buttonText={"Edit Info"}
+                    navBar={false}
+                    interviewColumn={true}
+                  />
                 )}
 
                 {displayRejectedButton ? (
