@@ -51,6 +51,18 @@ function App() {
     }
   };
 
+  const editJobListing = async (jobId, updatedJob) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8000/jobs/${jobId}/`,
+        updatedJob
+      );
+      if (response.status === 200) getJobListings();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getArchivedJobs = async () => {
     try {
       const response = await axios.get("http://localhost:8000/archived_jobs/");
@@ -169,6 +181,7 @@ function App() {
               rejectedJobs={rejectedJobs}
               addRejectedJob={addRejectedJob}
               deleteRejectedJob={deleteRejectedJob}
+              editJobListing={editJobListing}
             />
           }
         />
