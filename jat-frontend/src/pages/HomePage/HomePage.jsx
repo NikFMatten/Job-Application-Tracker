@@ -21,6 +21,7 @@ const HomePage = (props) => {
     addRejectedJob,
     deleteRejectedJob,
     deleteArchivedJob,
+    editJobListing,
   } = props;
   return (
     <div>
@@ -34,6 +35,7 @@ const HomePage = (props) => {
                 addNewArchivedJob={addNewArchivedJob}
                 addInterviewingJob={addInterviewingJob}
                 addRejectedJob={addRejectedJob}
+                editJobListing={editJobListing}
               />
             </Grid>
             <Grid item sm={2}>
