@@ -9,7 +9,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 const JobForm = (props) => {
-  const { addJobListing } = props;
+  const { apiCall, buttonText, navBar, interviewColumn } = props;
   const [open, setOpen] = useState(false);
   const [companyName, setCompanyName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
@@ -19,6 +19,7 @@ const JobForm = (props) => {
   const [officePolicy, setOfficePolicy] = useState("");
   const [jobLocation, setJobLocation] = useState("");
   const [dateApplied, setDateApplied] = useState("");
+  const [interviewType, setInterviewType] = useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -40,17 +41,25 @@ const JobForm = (props) => {
       job_location: jobLocation,
       date_applied: dateApplied,
     };
-    addJobListing(jobToAdd);
+    if (interviewColumn) jobToAdd.interview_type = interviewType;
+    apiCall(jobToAdd);
     console.log(jobToAdd);
     setOpen(false);
   };
 
   return (
     <div>
-      <Button variant="text" onClick={handleClickOpen}>
-        <AddCircleOutlineIcon sx={{ mr: 1 }} />
-        Add Job
-      </Button>
+      {navBar ? (
+        <Button variant="text" onClick={handleClickOpen}>
+          <AddCircleOutlineIcon sx={{ mr: 1 }} />
+          {buttonText}
+        </Button>
+      ) : (
+        <Button variant="contained" onClick={handleClickOpen} sx={{ mb: 2 }}>
+          {buttonText}
+        </Button>
+      )}
+
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add a Job</DialogTitle>
         <DialogContent>
@@ -141,6 +150,20 @@ const JobForm = (props) => {
             value={dateApplied}
             onChange={(e) => setDateApplied(e.target.value)}
           />
+          {interviewColumn ? (
+            <TextField
+              autoFocus
+              margin="dense"
+              id="interviewType"
+              label="Interview Type"
+              fullWidth
+              variant="standard"
+              value={interviewType}
+              onChange={(e) => setInterviewType(e.target.value)}
+            />
+          ) : (
+            <></>
+          )}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
