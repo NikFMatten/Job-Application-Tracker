@@ -12,7 +12,12 @@ const NavBar = (props) => {
     <>
       <Box sx={{ mx: 5, mb: 3 }}>
         <Paper elevation={2} sx={{ backgroundColor: "#0f263e", pl: 5 }}>
-          <JobForm addJobListing={addJobListing} />
+          <JobForm
+            apiCall={addJobListing}
+            buttonText={"Add Job"}
+            navBar={true}
+            interviewColumn={false}
+          />
         </Paper>
       </Box>
     </>
