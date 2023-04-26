@@ -28,7 +28,7 @@ const HomePage = (props) => {
       <Container id="container">
         {jobListings.length > 0 ? (
           <Grid container spacing={10} sx={{ width: "max-content", ml: -30 }}>
-            <Grid item sm={2}>
+            <Grid item sm={2} sx={{ mr: 5 }}>
               <ListOfJobs
                 jobListings={jobListings}
                 deleteJobListing={deleteJobListing}
@@ -38,7 +38,7 @@ const HomePage = (props) => {
                 editJobListing={editJobListing}
               />
             </Grid>
-            <Grid item sm={2}>
+            <Grid item sm={2} sx={{ mr: 5 }}>
               <MonthOldJobs
                 jobListings={jobListings}
                 deleteJobListing={deleteJobListing}
@@ -47,7 +47,7 @@ const HomePage = (props) => {
                 addRejectedJob={addRejectedJob}
               />
             </Grid>
-            <Grid item sm={2}>
+            <Grid item sm={2} sx={{ mr: 5 }}>
               <InterviewingColumn
                 interviewingJobs={interviewingJobs}
                 deleteInterviewingJob={deleteInterviewingJob}
@@ -55,7 +55,7 @@ const HomePage = (props) => {
                 addRejectedJob={addRejectedJob}
               />
             </Grid>
-            <Grid item sm={2}>
+            <Grid item sm={2} sx={{ mr: 5 }}>
               <RejectedJobs
                 rejectedJobs={rejectedJobs}
                 addNewArchivedJob={addNewArchivedJob}
@@ -63,14 +63,14 @@ const HomePage = (props) => {
                 addInterviewingJob={addInterviewingJob}
               />
             </Grid>
-            <Grid item sm={2}>
+            {/* <Grid item sm={2}>
               <ArchivedJobs
                 archivedJobs={archivedJobs}
                 deleteArchivedJob={deleteArchivedJob}
                 addInterviewingJob={addInterviewingJob}
                 addRejectedJob={addRejectedJob}
               />
-            </Grid>
+            </Grid> */}
           </Grid>
         ) : (
           <NoJobData />
