@@ -7,6 +7,7 @@ import NarBar from "./components/NavBar/NavBar";
 
 // Page imports
 import HomePage from "./pages/HomePage/HomePage";
+import ArchivePage from "./pages/ArchivePage";
 
 function App() {
   const [jobListings, setJobListings] = useState([]);
@@ -185,6 +186,26 @@ function App() {
             />
           }
         />
+        <Route
+          path="/archive"
+          element={
+            <ArchivePage
+              jobListings={jobListings}
+              addJobListing={addJobListing}
+              archivedJobs={archivedJobs}
+              deleteJobListing={deleteJobListing}
+              addNewArchivedJob={addNewArchivedJob}
+              deleteArchivedJob={deleteArchivedJob}
+              interviewingJobs={interviewingJobs}
+              addInterviewingJob={addInterviewingJob}
+              deleteInterviewingJob={deleteInterviewingJob}
+              rejectedJobs={rejectedJobs}
+              addRejectedJob={addRejectedJob}
+              deleteRejectedJob={deleteRejectedJob}
+              editJobListing={editJobListing}
+            />
+          }
+        ></Route>
       </Routes>
     </div>
   );
